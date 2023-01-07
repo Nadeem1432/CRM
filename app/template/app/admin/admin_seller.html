@@ -1,0 +1,93 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Seller list {% endblock %}
+
+
+{% block body %}
+
+
+{% include 'app/admin/admin_header.html' %}
+
+
+<div class="navbar navbar-expand-lg smooth" style="background-color: #03A9F4;">
+    <div class="container my-2">
+      <form method="POST" action="{% url 'admin_seller' %}" class=" my-2 my-lg-0 ">
+    
+        {%  csrf_token %}
+        <div class="row">
+    
+          <div class="col-sm-2">
+            <input name="seller_username" id="client_name" class="form-control  mr-sm-2" type="text" placeholder="USERNAME"  aria-label="client name" title="enter username "  required>
+          </div>
+    
+          <div class="col-sm-2">
+            <input name="seller_password" id="client_id" class="form-control mr-sm-2" type="text" placeholder="PASSWORD"  aria-label="client id." title="enter password" required>
+          </div>
+    
+          <div class="col-sm-2">
+            <input name="seller_credit" id="client_id" class="form-control mr-sm-2" type="number" min="0" placeholder="CREDIT"  aria-label="client id." title="enter credit" width=20 >
+          </div>
+    
+          <div class="col-sm-6">
+            <button  style="float:right;" class="btn btn-primary my-2 my-sm-0" type="submit" title="Create">Create Seller</button>
+          </div>
+
+          
+        </div>
+            
+            
+            
+          </form>
+    </div>
+    </div>
+    
+<hr>
+<!-- Show keys table code -->
+<div class="container">
+<table class="table table-striped table-light">
+    <thead class="thead-dark">
+    <tr>
+      <th>S.No</th>
+      <th>Seller Username</th>
+      <th>Seller Password</th>
+      <th>credits</th>
+      
+      <th class="">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+      {% for i in sellers.all %}
+      
+      
+      <tr>
+        <td>{{ forloop.counter}}</td>
+        <td>{{ i.username }}</td>
+        <td>{{ i.seller_pass }}</td> 
+ 
+
+
+
+        <td>{{ i.credit }}</td>
+          <td>
+            <a href="{% url 'update_seller'  i.id %}" class="btn btn-success">Update</a>
+            <a href="{% url 'delete_seller'  i.id %}" onclick="return confirm('Do you want to really delete?   ') ; "  class="btn btn-danger">Delete</a>
+  
+          
+      </td>
+      
+      </tr>
+      {% endfor %}
+      </tbody>
+  
+  </table>
+</div>
+
+
+
+{% include 'app/admin/admin_footer.html' %}
+
+
+{%endblock%}

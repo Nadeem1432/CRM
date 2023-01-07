@@ -1,0 +1,31 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Keys {% endblock %}
+
+
+{% block body %}
+<form class="form-inline">
+    <div class="form-group">
+      <input type="text" class="form-control" name="watch" value="" placeholder="watch">
+    </div>
+  
+    <div class="input-group m-2">
+       <div class="input-group-prepend">
+            <div class="input-group-text">$</div>
+       </div>
+       <input type="text" class="form-control" id="price" placeholder="Price (optional)">
+    </div>  
+  
+    <button type="submit" class="btn btn-primary m-2" onclick="update($(this));"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i> Update</button>
+  </form>
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div style="width:180px;" class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </div>
+
+{% endblock %}

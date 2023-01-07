@@ -1,0 +1,68 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Hi admin {% endblock %}
+
+
+{% block body %}
+
+{% include 'app/admin/admin_header.html' %}
+
+
+
+<h3 class="text-center " style="color: #03A9F4;"><b class="smooth px-3">DASHBOARD</b></h3>
+<hr style="color: #03A9F4;">
+<br>
+<div class="container">
+
+  <div class="row ">
+
+    <div class="col-md-6 mt-1    smooth" style="background-color:silver">
+      <h3 class="mt-4" style="float: left;"  >TOTAL ID</h3> 
+      <h3 style="float: right;" class="mt-4"><b>{{ total_id }}</b></h3> 
+    </div>
+
+    <div class="col-md-6 mt-1   smooth "  style="background-color:wheat">
+      <h3 class="mt-4"style="float: left;" >TODAY's SOLD ID</h3> 
+      <h3 class="mt-4"style="float: right;"><b>{{today_sold_id}}</b></h3> 
+    </div>
+    </div><br>
+    
+    
+
+
+  <div class="row ">
+
+    <div class="col-md-6    smooth" style="background-color:lawngreen">
+      <h3 class="mt-4" style="float: left;" >ACTIVATE ID</h3> 
+      <h3 class="mt-4"style="float: right;"><b>{{active_id}}</b></h3> 
+    </div>
+
+    <div class="col-md-6    smooth" style="background-color:red">
+      <h3 class="mt-4"style="float: left;" >DEACTIVATE ID </h3>
+      <h3 class="mt-4"style="float: right;"><b>{{inactive_id}}</b></h3> 
+    </div>
+
+  </div><br>
+
+  <div class="row ">
+    <div class="col-md-6   smooth " style="background-color:skyblue">
+      <h3 class="mt-4"style="float: left;" >TOTAL SUPER</h3> 
+      <h3 class="mt-4"style="float: right;"><b>{{ total_super }}</b></h3> 
+    </div>
+    <div class="col-md-6   smooth " style="background-color:#03A9F4">
+      <h3 class="mt-4"style="float: left;" >TOTAL SELLER</h3> 
+      <h3 class="mt-4"style="float: right;"><b>{{ total_seller }}</b></h3> 
+    </div>
+  
+
+  </div><br>
+
+
+
+
+  
+
+{% include 'app/admin/admin_footer.html' %}
+
+{% endblock %}

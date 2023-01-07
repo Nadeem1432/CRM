@@ -1,0 +1,78 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Seller Update {% endblock %}
+
+
+{% block body %}
+<p class="text-center" style="    background-color: #03A9F4;
+color:white ;" > Hii Super</p>
+<br><hr>
+<h3 class="text-center " style="color: #03A9F4;"><b class="smooth px-3"><i>Update Seller </i> `{{victim}}`</b></h3>
+<hr style="color: #03A9F4;">
+
+
+<div class="navbar navbar-expand-lg smooth" style="background-color: #03A9F4;">
+    <div class="container my-2">
+        {% for i in seller %}
+      <form method="POST" action="{% url 'update_seller'  i.id  %}" class=" my-2 my-lg-0 ">
+    
+        {%  csrf_token %}
+        <div class="row">
+    
+          <div class="col-md-6">
+            <input name="seller_credit" id="seller_credit" class="form-control mr-sm-2" type="number" min="0" placeholder="CREDIT"  aria-label="client id." title="enter credit" width=20  required>
+          </div>
+
+          <div class="col-md-6">
+            <button  style="float:right;" class="btn btn-primary my-2 my-sm-0" type="submit" title="Create" onclick="return confirm('Are you sure to send credits?   ') ; " required>Send Credit</button>
+          </div>
+
+        </div>
+            
+          </form>
+
+
+
+          {% endfor %}
+    </div>
+    </div>
+    
+<hr>
+
+
+<div class="navbar navbar-expand-lg smooth" style="background-color: #03A9F4;">
+    <div class="container my-2">
+        {% for i in seller %}
+      <form method="POST" action="{% url 'update_seller_password'  i.id  %}" class=" my-2 my-lg-0 ">
+    
+        {%  csrf_token %}
+        <div class="row">
+    
+          <div class="col-md-6">
+            <input name="seller_password" id="seller_password" class="form-control mr-sm-2" type="text" placeholder="ENTER PASSWORD"  aria-label="client id." title="enter password" width=20  required>
+          </div>
+
+          <div class="col-md-6">
+            <button  style="float:right;" class="btn btn-warning my-2 my-sm-0" type="submit" title="Create" onclick="return confirm('Are you sure to update the password ?   ') ; " required>Change Password</button>
+          </div>
+
+        </div>
+            
+          </form>
+
+
+
+          {% endfor %}
+    </div>
+    </div>
+    
+<hr>
+
+
+
+
+
+
+
+{%endblock%}

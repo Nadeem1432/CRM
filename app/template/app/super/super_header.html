@@ -1,0 +1,43 @@
+<p class="text-center" style="    background-color: #03A9F4;
+color:white ;" > Hii Super</p>
+
+
+
+<div class="">
+  <nav class="container navbar navbar-expand-lg  ftco-navbar-light" id="ftco-navbar">
+    <!-- <nav class=" navbar navbar-expand-lg  ftco-navbar-light" style="    background-color:white ;" id="ftco-navbar"> -->
+    <div class=" d-flex align-items-center px-4">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> Menu
+      </button>
+
+      <div class=" mx-5 collapse navbar-collapse" id="ftco-nav">
+        <ul class="container navbar-nav mr-auto mx-5 mb-4" style="font-weight: 500">
+          <li class="nav-item smooth px-3 " {% if request.resolver_match.url_name == 'super_view' %} style="background-color:navy;" {% endif %}><a  href="{% url 'super_view' %}" class="nav-link pl-0"><b>DASHBOARD</b></a></li>
+          <li class="nav-item smooth px-3 " {% if request.resolver_match.url_name == 'super_seller' %} style="background-color:navy;" {% endif %}><a href="{% url 'super_seller' %}" class="nav-link"><b>SELLER</b></a></li>
+          <li class="nav-item smooth px-3 " {% if request.resolver_match.url_name == 'super_keys' %} style="background-color:navy;" {% endif %}><a href="{% url 'super_keys' %}" class="nav-link"><b>KEYS</b></a></li>
+          <li class="nav-item smooth px-3 " {% if request.resolver_match.url_name == 'super_transaction' %} style="background-color:navy;" {% endif %}><a href="{% url 'super_transaction' %}" class="nav-link"><b>TRANSACTION</b></a></li>
+          <li class="nav-item smooth px-3 " {% if request.resolver_match.url_name == 'super_proxy' %} style="background-color:navy;" {% endif %}><a href="{% url 'super_proxy' %}" class="nav-link"><b>PROXY</b></a></li>
+          <li class="nav-item smooth px-3 " {% if request.resolver_match.url_name == 'super_history' %} style="background-color:navy;" {% endif %}><a href="{% url 'super_history' %}" class="nav-link"><b>HISTORY</b></a></li>
+          <li class="nav-item smooth px-3 "><a href="{% url 'logout' %}" class="nav-link"><b style="color: red;">LOGOUT</b></a></li>
+          
+        </ul>
+        <div class="dropdown">
+          <p  class=" px-2  ml-4" style="float: right;"  ><b><a  style="color: maroon;max-width: 120px;" class="nav-link  ml-4 rounded-circle "  ><span class="fas fa-user-circle" style='font-size:48px;color:#03A9F4'></span>  </a> </b></p>
+          <div class="dropdown-content">
+            <div class="dropdown-divider"></div>
+            <h6 class="dropdown-header"><span class="fas fa-user-alt mr-2"></span> {{ user.get_username }}</h6>
+            <div class="dropdown-divider"></div>
+            <a  href="{% url 'change_self_password' %}">change password</a>
+            <a href="{% url 'configuration' %}">update configuration</a>
+            <a href="#">other</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+<br>
+<hr style="color: #03A9F4;">

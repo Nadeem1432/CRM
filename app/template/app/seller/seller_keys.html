@@ -1,0 +1,322 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Keys {% endblock %}
+
+
+{% block body %}
+
+
+{% include 'app/seller/seller_header.html' %}
+
+
+
+
+
+<!-- modal code -->
+
+
+
+
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add ip to Key_Name</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Old Password</label>
+            <input type="text" class="form-control" id="recipient-name" value="Key_Name">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">New Password</label>
+            <input type="text" class="form-control" id="recipient-name" value="Key_Name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Add IP</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User Id Info</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Old Password</label>
+            <input type="text" class="form-control" id="recipient-name" >
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">New Password</label>
+            <input type="text" class="form-control" id="recipient-name" >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Add IP</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="modal fade" id="getCodeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User Id Info</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container"> 
+          <p>Customer Id   :   <b><span id="customer_id_span"></b></span></p>
+          <p>Customer Name   :   <b><span id="customer_name_span"></b></span></p>
+          <!-- <p>Owner Name   :   <b><span id="creator_span"></b></span></p> -->
+          <p>Expiry Date   :   <b><span id="expiry_date_span"></b></span></p>
+          <p>Version   :   <b><span id="version_span"></b></span></p>
+
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Add IP</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- end modal code -->
+
+
+
+<!-- Modal 2 -->
+<!-- <div class="modal fade" id="getCodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"> API CODE </h4>
+      </div>
+      <div class="modal-body" id="getCode" style="overflow-x: scroll;">
+        <p>Customer Id : <span id="customer_id_span"></span></p>
+        <p>Customer Name : <span id="customer_name_span"></span></p>
+        <p>Expiry Date : <span id="expiry_date_span"></span></p>
+      </div>
+   </div>
+  </div>
+</div>
+ -->
+
+
+
+
+
+<!-- Add key form code -->
+<div class="navbar navbar-expand-lg smooth" style="background-color: #03A9F4;">
+    <!-- <div class="container my-2">
+      <form method="POST" action="{% url 'seller_keys' %}" class="form-inline my-2 my-lg-0 ">
+    
+    {%  csrf_token %}
+        <input name="client_name" id="client_name" class="form-control  mr-sm-2" type="search" placeholder="CUST NAME"  aria-label="client name" title="enter customer name "  required>
+        <input name="client_id" id="client_id" class="form-control mr-sm-2" type="search" placeholder="Key"  aria-label="client id." title="enter customer id." required>
+        
+        <select name="client_version" id="employee_gender" class="form-control mr-sm-2" aria-label="Default select example" required>
+        
+          <option value="full">Full</option>
+          
+        </select>
+        
+        <button  style="float:right;" class="btn btn-primary my-2 my-sm-0" type="submit" title="search">Add Key</button>
+      </form>
+    </div> -->
+
+    <div class="container my-2">
+      <form method="POST" action="{% url 'seller_keys' %}" class=" my-2 my-lg-0 ">
+    
+    {%  csrf_token %}
+    <div class="row">
+
+      <div class="col-md-3">
+        <input name="client_name" id="client_name" class="form-control  mr-sm-2" type="search" placeholder="CUST NAME"  aria-label="client name" title="enter customer name "  required>
+      </div>
+
+      <div class="col-md-3">
+        <input name="client_id" id="client_id" class="form-control mr-sm-2" type="search" placeholder="Key"  aria-label="client id." title="enter customer id." required>
+      </div>
+
+      <div class="col-md-3">
+        <select name="client_version" id="employee_gender" class="form-control mr-sm-2" aria-label="Default select example" required>
+        
+          <option value="full">Full</option>
+          
+        </select>
+
+
+      </div>
+
+      <div class="col-md-3">
+        <button  style="float:right;" class="btn btn-primary my-2 my-sm-0" type="submit" title="search">Add Key</button>
+      </div>
+      
+    </div>
+        
+        
+        
+      </form>
+    </div>
+    </div>
+    
+<hr>
+<!-- Show keys table code -->
+<div class="container">
+<table class="table table-striped table-light">
+    <thead class="thead-dark">
+    <tr>
+      <th>S.No</th>
+      <th>Key</th>
+      <th>Customer Name</th>
+      <th>Mac</th>
+      <th>Reg. Date</th>
+      <!-- <th>Exp. Date</th> -->
+      <th>Validity</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th class="">Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+      {% for i in data.all %}
+      
+      
+      <tr>
+        <td>{{ forloop.counter}}</td>
+        <td>{{ i.user_id }}</td>
+        <td>{{ i.customer_name }}</td> 
+ 
+        {%  if i.ip == "None" %}
+           <td class="text-muted">Not Set</td>
+        {%else%}
+          <td style="color: maroon;">{{ i.ip }}</td>
+        {%endif%}
+
+
+        <td>{{ i.created_at }}</td>
+        <!-- <td>24Feb2022</td> -->
+        <td>{{ i.validity }} Days</td>
+        <td>{{ i.version }}</td>
+        
+        {%  if i.validity  <= 0 %}
+        <td style="color:red; "><b>  Expired</b></td>
+        {% else %}
+        <td style="color:darkgreen; "><b>  Active</b></td>
+        {% endif %}
+        <td>
+          
+          {%  if i.validity  >= 29 %}
+          <a ><span class="btn btn-success disabled" >Renew Id</span></a>
+          {% else %}
+          <a href="{% url 'seller_renew_id'  i.user_id %}"  onclick="return confirm('Do you want to really renew Id   `{{ i.user_id }}` ') ; "><span class="btn btn-success">Renew ID</span></a>
+          {% endif %}
+
+          <a class="viewbutton"  data-toggle="modal" data-target="#getCodeModal" data-userid="{{ i.user_id }}" ><span class="btn btn-info">View ID</span></a>
+          
+          
+      </td>
+      
+      </tr>
+      {% endfor %}
+      </tbody>
+  
+  </table>
+</div>
+
+{% include 'app/seller/seller_footer.html' %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+
+
+<!-- code for  view id popup -->
+<script>
+
+  $('.viewbutton').click(function(){
+            var user_id;
+            user_id = $(this).attr("data-userid");
+      $.ajax(
+        
+      {
+                
+          type:"GET",
+          url: "{% url 'seller_view_id' %}",
+          data:{
+            user_id: user_id,
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+          },
+
+          beforeSend: function() {
+                },
+          error: function() {
+                   alert('Error');
+                },
+          success: function(response) 
+          {
+
+                      var dataVar = response['Key'];
+                      for(var i = 0; i < dataVar.length; i++){
+                          var userid = dataVar[i]['user_id'];
+                          var customer   = dataVar[i]['customer_name'];
+                          var expiry   = dataVar[i]['expired_at'];
+                          var version   = dataVar[i]['version'];
+
+                          $('#customer_name_span').html(customer);
+                          $('#customer_id_span').html(userid);
+                          $('#expiry_date_span').html(expiry);
+                          $('#version_span').html(version);
+                          // $('#creator_span').html(creator);
+                          $("#getCodeModal").modal('show');
+                          // $('#sectionname').append('<option value="'+id+'">'+name+'</option>');
+                          //alert(userid);
+                          //console.log(response);
+                                                            } 
+                               }
+       })
+  });
+
+
+// show password modal
+  $('.passwordModal').click(function(){
+    $("#passwordModal").modal('show');
+  });
+
+</script>
+
+
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} super Transaction {% endblock %}
+
+
+{% block body %}
+
+
+{% include 'app/super/super_header.html' %}
+
+
+
+<h3 class="text-center " style="color: #03A9F4;"><b class="smooth px-3">TRANSACTIONS</b></h3>
+<hr style="color: #03A9F4;">
+
+<br>
+<div class="container">
+    <table class="table table-striped table-light">
+        <thead class="thead-dark">
+        <tr>
+          <th class="col-5">Destination</th>
+          <th>Train No</th>
+          <th>Gateway</th>
+          <th>PNR Time</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+    
+        <tbody>
+    
+{%  for i in data.all %}
+          <tr>
+            <td>{{ i.designation}}</td>
+            <td>{{ i.train_no }}</td> 
+            <td>{{ i.gateway }}</td>
+            <td>{{ i.pnr_time }}</td>
+            {% if i.status %}
+            <td style="color:darkgreen; "><b>success</b></td>
+            {% else %}    
+            <td style="color:red; "><b>failed</b></td>
+            {%endif%}
+          </tr>
+
+{% endfor %} 
+          </tbody>
+      
+      </table>
+    </div>
+    
+
+
+
+{% include 'app/super/super_footer.html' %}
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Login {% endblock %}
+
+{% block body %}
+
+    <div class="wrapper">
+    <div class="logo"> <img src="{% static 'images/logo.jpg' %}" alt=""> </div>
+      <div class="text-center mt-4 name"> PANEL </div>
+      <form class="p-3 mt-3" method="POST" action="{% url 'home' %}">
+          {% csrf_token %}
+          <div class="form-field d-flex align-items-center"> <span class="fas fa-users"></span>
+            <select class="" name="usertype" required>
+              <option value="">usertype</option>
+              <option value="admin">Admin</option>
+              <option value="super">Super</option>
+              <option value="seller">Seller</option>
+            </select>
+           </div>
+
+          <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="username" id="userName" placeholder="username"> </div>
+          <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="pwd" placeholder="password"> </div> <button class="btn mt-3">Login</button>
+      </form>
+    </div>
+{%  endblock %}
+

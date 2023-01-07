@@ -1,0 +1,87 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Update Configuration {% endblock %}
+
+
+{% block body %}
+<p class="text-center" style="    background-color: #03A9F4;
+color:white ;" > config your app .</p>
+<br><hr>
+<div class="container">
+
+<div class="row">
+  <div class="col-md-1">
+    <h6 class="ml-4" style="color: #03A9F4;"><b class="smooth px-3"><a href="{% url 'home'  %}" style="color: #03A9F4;"><i>Back</i> </a></b></h3>
+  </div>
+  <div class="col-md-11">
+    <h3 class="text-center " style="color:darkgreen;"><b class="smooth px-3"><i>CONFIGURATION  </i> </b></h3>
+  </div>
+</div>
+</div>
+<hr style="color: #03A9F4;">
+
+
+<div class="smooth" style="background-color: #03A9F4;">
+    <div class="container my-2 mt-2"><br>
+      <form method="POST" action="{% url 'configuration'  %}" class=" my-2 my-lg-0 ">
+    
+        {%  csrf_token  %}
+        <div class="row my-4">
+    
+          <div class="col-md-6">
+            <label for="app_version" style="color: azure;">App Version</label>
+            <input name="app_version" id="app_version" class="form-control mr-sm-2" type="text" placeholder="APP VERSION"  aria-label="client id."  value="{{ app_version }}" title="enter app version" width=25  >
+          </div>
+
+          <div class="col-md-6 ">
+            <label for="dll_version" style="color: azure;">Dll Version</label>
+            <input name="dll_version" id="dll_version" class="form-control mr-sm-2" type="text" placeholder="DLL VERSION"  aria-label="client id."  value="{{ dll_version }}"  title="enter dll version" width=25  >
+          </div>
+          
+        </div>
+        <div class="row my-4">
+          <div class="col-md-6">
+            <label for="message" style="color: azure;">Message</label>
+            <textarea name="message" class="form-control" id="message" rows="3">{{ message }}</textarea>
+          </div>
+
+          <div class="col-md-6">
+            <label for="short_message" style="color: azure;">Short Message</label>
+            <textarea name="short_message" class="form-control" id="short_message" rows="3">{{ short_message }}</textarea>
+          </div>
+        </div>
+
+        <div class="row my-4">
+          
+          <div class="col-md-12">
+            <label for="news" style="color: azure;">News</label>
+            <textarea name="news" class="form-control" id="news" rows="2">{{ news }}</textarea>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <button  class="btn btn-success my-2 " type="submit" title="Create" style=" width: 1299px !important;" required>Save Configuration</button>
+          </div>
+        </div>
+        
+      </div>
+      <br>
+
+        </form>
+
+      </div>
+
+
+    </div>
+<hr>
+
+
+
+
+
+
+
+{%endblock%}
