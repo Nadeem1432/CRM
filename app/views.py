@@ -19,8 +19,17 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 
 from ipaddr import client_ip
-# test
 
+def update_status_automatically( ):
+    expired_keys = Key.objects.filter(Q(expired_at__lt=timezone.now()))
+    for key in expired_keys:
+        key_obj = Key.objects.get(user_id = key.user_id)
+        key_obj.pay_status = False
+        key_obj.save()
+    
+
+
+# test
 def test(request):
     if not request.user.is_authenticated:
         return redirect('home')
@@ -95,6 +104,7 @@ def SellerProxy(request):
         # ''' TODO : add ip to userid '''
         userid_obj = Key.objects.get(user_id = userid )
         userid_obj.ip = ip.strip()
+        userid_obj.pay_status = True
         userid_obj.save()
 
         keys = Key.objects.filter(created_by__username__in = include_logged_users).order_by('-created_at')
@@ -219,6 +229,8 @@ def Sellerkeys(request):
 
 
 def Home(request):
+    update_status_automatically( )
+    
     if  request.user.is_authenticated:
         username  = request.user.username
         usern     = User.objects.get(username=username)
@@ -382,6 +394,7 @@ def DeleteIp(request,id):
 
     key = Key.objects.get(id=id)
     key.ip = "None"
+    key.pay_status = False
     key.save()
 
     username      = request.user.username

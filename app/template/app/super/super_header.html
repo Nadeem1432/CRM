@@ -24,13 +24,12 @@ color:white ;" > Hii Super</p>
         </ul>
         <div class="dropdown">
           <p  class=" px-2  ml-4" style="float: right;"  ><b><a  style="color: maroon;max-width: 120px;" class="nav-link  ml-4 rounded-circle "  ><span class="fas fa-user-circle" style='font-size:48px;color:#03A9F4'></span>  </a> </b></p>
-          <div class="dropdown-content">
+          <div  style="width:180px;" class="dropdown-content">
             <div class="dropdown-divider"></div>
             <h6 class="dropdown-header"><span class="fas fa-user-alt mr-2"></span> {{ user.get_username }}</h6>
             <div class="dropdown-divider"></div>
             <a  href="{% url 'change_self_password' %}">change password</a>
             <a href="{% url 'configuration' %}">update configuration</a>
-            <a href="#">other</a>
           </div>
         </div>
       </div>

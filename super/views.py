@@ -85,6 +85,7 @@ def superProxy(request):
         # ''' TODO : add ip to userid '''
         userid_obj = Key.objects.get(user_id = userid ) 
         userid_obj.ip = ip.strip()
+        userid_obj.pay_status = True
         userid_obj.save()
         
         keys =  Key.objects.filter(created_by__username__in = include_logged_users ).order_by('-created_at')
@@ -235,6 +236,7 @@ def DeleteSuperIp(request,id):
     
     key    = Key.objects.get(id=id)
     key.ip = "None"
+    key.pay_status = False
     key.save()
     
     users = all_under_user(request.user.username)

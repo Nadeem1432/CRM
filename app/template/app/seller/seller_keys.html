@@ -232,11 +232,25 @@
         <td>{{ i.validity }} Days</td>
         <td>{{ i.version }}</td>
         
-        {%  if i.validity  <= 0 %}
+        <!-- {%  if i.validity  <= 0 %}
         <td style="color:red; "><b>  Expired</b></td>
         {% else %}
         <td style="color:darkgreen; "><b>  Active</b></td>
-        {% endif %}
+        {% endif %} -->
+        
+        <td>
+          <b>{%  if i.validity <= 0 %} <p class="badge" style="color:red;">Expired</p>{% else %}
+             <p class="badge" style="color:green;">Active</p> 
+            {% endif %} 
+
+            {%  if i.validity >= 0  and  i.pay_status %}
+            <p class="badge" style="color:green;"> Paid </p> {% else %}
+            <p class="badge" style="color:red;"> Unpaid </p> {% endif %} 
+          </b>
+        </td>
+
+        
+
         <td>
           
           {%  if i.validity  >= 29 %}

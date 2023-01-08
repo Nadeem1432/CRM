@@ -29,6 +29,7 @@ class KeyAdmin(admin.ModelAdmin):
     list_display = (
         'user_id',
         'customer_name',
+        'pay_status',
         'created_at',
         'created_by',
     )
